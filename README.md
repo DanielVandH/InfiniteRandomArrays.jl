@@ -49,5 +49,59 @@ julia> mat = InfRandMatrix(Xoshiro(), ∞, 7; dist = Exponential()) # tall rando
  2.00946   2.7429    0.97791   1.68287    0.712554  1.26766   0.0432282
  0.260173  0.947835  0.668184  0.405158   1.81257   0.195216  3.52343
  1.0597    0.680587  0.616505  0.100519   0.387551  2.80689   0.63101
- ⋮                                                  ⋮
+ ⋮        
+ 
+julia> mat = InfRandMatrix(; dist = InfiniteRandomArrays.Normal{Float32}()) # if you don't want to depend on Distributions.jl for normal sampling
+ℵ₀×ℵ₀ InfRandMatrix{Float32, InfRandVector{Float32, InfiniteRandomArrays.Normal{Float32}, Xoshiro}, Infinities.Infinity, Infinities.Infinity} with indices OneToInf()×OneToInf():
+  0.306927  -0.15094     1.04316   -1.13007    -1.14508   -0.0463847   0.744666  …
+ -1.34004   -0.314993    1.01494   -1.91199    -1.52208   -0.552572   -0.760699
+  0.194879   0.0223698   0.196902   0.675849    1.60287   -0.233533   -1.4827
+  0.717089   1.12661     0.749318   0.0874666   1.06572   -1.05195     1.64873
+ -2.94036   -2.05101    -0.384845   0.905886    0.912348  -0.845594   -0.737711
+  ⋮                                                        ⋮                     ⋱
+                                          ⋮
+```
+
+You can also generate random infinite random banded matrices.
+
+```julia-repl
+julia> using InfiniteRandomArrays, BandedMatrices
+
+julia> brand(∞, 2)
+ℵ₀×ℵ₀ BandedMatrix{Float64} with bandwidths (-2, 2) with data 1×ℵ₀ InfRandMatrix{Float64, InfRandVector{Float64, Type{Float64}, Random.Xoshiro}, Int64, Infinities.Infinity} with indices Base.OneTo(1)×OneToInf() with indices 1:∞×OneToInf():
+  ⋅    ⋅   0.723141   ⋅         ⋅         ⋅          ⋅        …
+  ⋅    ⋅    ⋅        0.186655   ⋅         ⋅          ⋅
+  ⋅    ⋅    ⋅         ⋅        0.676184   ⋅          ⋅
+  ⋅    ⋅    ⋅         ⋅         ⋅        0.0671784   ⋅
+  ⋅    ⋅    ⋅         ⋅         ⋅         ⋅         0.360374
+  ⋅    ⋅    ⋅         ⋅         ⋅         ⋅          ⋅        …
+  ⋅    ⋅    ⋅         ⋅         ⋅         ⋅          ⋅
+ ⋮                                       ⋮                    ⋱
+
+julia> brandn(∞, ∞, 0, 1)
+ℵ₀×ℵ₀ BandedMatrix{Float64} with bandwidths (0, 1) with data 2×ℵ₀ InfRandMatrix{Float64, InfRandVector{Float64, InfiniteRandomArrays.Normal{Float64}, Random.Xoshiro}, Int64, Infinities.Infinity} with indices Base.OneTo(2)×OneToInf() with indices 1:∞×OneToInf():
+ -0.194233  1.40483    ⋅          ⋅          ⋅          ⋅        …
+   ⋅        1.31805  -0.773853    ⋅          ⋅          ⋅
+   ⋅         ⋅        0.396964   0.813132    ⋅          ⋅
+   ⋅         ⋅         ⋅        -0.938625  -0.449394    ⋅
+   ⋅         ⋅         ⋅          ⋅         0.962001  -0.355942
+   ⋅         ⋅         ⋅          ⋅          ⋅        -0.155913  …
+   ⋅         ⋅         ⋅          ⋅          ⋅          ⋅
+  ⋮                                                    ⋮         ⋱
+
+julia> brandn(2, ∞, -1, 3)
+2×ℵ₀ BandedMatrix{Float64} with bandwidths (-1, 3) with data 3×ℵ₀ InfRandMatrix{Float64, InfRandVector{Float64, InfiniteRandomArrays.Normal{Float64}, Random.Xoshiro}, Int64, Infinities.Infinity} with indices Base.OneTo(3)×OneToInf() with indices 1:2×OneToInf():
+  ⋅   -0.452139  0.695347   0.0522877    ⋅         ⋅    ⋅    ⋅    ⋅   …
+  ⋅     ⋅        0.386502  -1.22294    -0.211329   ⋅    ⋅    ⋅    ⋅
+
+julia> brandn(∞, (-2, 1))
+ℵ₀×ℵ₀ BandedMatrix{Float64} with bandwidths (2, 1) with data 4×ℵ₀ InfRandMatrix{Float64, InfRandVector{Float64, InfiniteRandomArrays.Normal{Float64}, Random.Xoshiro}, Int64, Infinities.Infinity} with indices Base.OneTo(4)×OneToInf() with indices 1:∞×OneToInf():
+  0.112621   0.228737    ⋅          ⋅         ⋅          ⋅        …  
+  0.256487  -0.420693  -0.957109    ⋅         ⋅          ⋅
+ -0.348874  -0.979824   0.852881  -1.166      ⋅          ⋅
+   ⋅         0.487066   0.961304  -0.197319  0.892409    ⋅
+   ⋅          ⋅         0.5048     0.012266  0.150144   1.0133
+   ⋅          ⋅          ⋅         0.171971  0.380894  -0.566895  …
+   ⋅          ⋅          ⋅          ⋅        0.675937   0.698617
+  ⋮                                                     ⋮         ⋱
 ```
