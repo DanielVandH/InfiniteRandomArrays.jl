@@ -10,8 +10,7 @@ import LinearAlgebra: SymTridiagonal, Tridiagonal, Bidiagonal,
 export InfRandVector, InfRandMatrix, ∞,
     InfRandSymTridiagonal, InfRandTridiagonal, InfRandBidiagonal,
     InfRandSymmetric, InfRandUnitUpperTriangular, InfRandUnitLowerTriangular,
-    InfRandUpperTriangular, InfRandLowerTriangular, InfRandDiagonal,
-    InfRandSPD
+    InfRandUpperTriangular, InfRandLowerTriangular, InfRandDiagonal
 
 get_antidiagonal_bidx(i, j) = i + j - 1 # what antidiagonal does (i, j) belong to 
 function diagtrav_idx(i, j) # assumes that the parent matrix is ∞ × ∞
