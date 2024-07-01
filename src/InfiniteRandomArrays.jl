@@ -3,8 +3,14 @@ module InfiniteRandomArrays
 import Random: Random, default_rng, seed!, AbstractRNG
 import LazyArrays: LazyArrays, AbstractCachedVector, resizedata!, LazyMatrix
 import InfiniteArrays: InfiniteArrays, ℵ₀, ∞, Infinity, InfiniteCardinal
+import LinearAlgebra: SymTridiagonal, Tridiagonal, Bidiagonal,
+    Symmetric, UnitUpperTriangular, UnitLowerTriangular,
+    UpperTriangular, LowerTriangular, Diagonal
 
-export InfRandVector, InfRandMatrix, ∞
+export InfRandVector, InfRandMatrix, ∞,
+    InfRandSymTridiagonal, InfRandTridiagonal, InfRandBidiagonal,
+    InfRandSymmetric, InfRandUnitUpperTriangular, InfRandUnitLowerTriangular,
+    InfRandUpperTriangular, InfRandLowerTriangular, InfRandDiagonal
 
 get_antidiagonal_bidx(i, j) = i + j - 1 # what antidiagonal does (i, j) belong to 
 function diagtrav_idx(i, j) # assumes that the parent matrix is ∞ × ∞
@@ -23,13 +29,14 @@ end
 
 struct Normal{T} end
 Normal(::Type{T}=Float64) where {T} = Normal{T}()
-_rand(rng, dist) = rand(rng, dist) 
+_rand(rng, dist) = rand(rng, dist)
 _rand(rng, ::Normal{T}) where {T} = randn(rng, T)
 
-
+_gen_seqs(::Val{N}, ::Type{T}) where {N,T} = ntuple(_ -> InfRandVector(dist=T), Val(N))
 
 include("vector.jl")
 include("matrix.jl")
+include("named.jl")
 
 if !isdefined(Base, :get_extension)
     include("../ext/InfiniteRandomArraysBandedMatricesExt.jl")

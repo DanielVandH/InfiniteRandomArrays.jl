@@ -2,7 +2,22 @@
 
 [![Build Status](https://github.com/DanielVandH/InfiniteRandomArrays.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/DanielVandH/InfiniteRandomArrays.jl/actions/workflows/CI.yml?query=branch%3Amain)
 
-Julia package for defining infinite random arrays using `InfRandVector` and `InfRandMatrix`.
+Julia package for defining infinite random arrays using `InfRandVector` and `InfRandMatrix`. Simple examples using these types are given below, and the full list of functions available is:
+
+```julia
+InfRandBidiagonal
+InfRandDiagonal
+InfRandLowerTriangular
+InfRandMatrix
+InfRandSymTridiagonal
+InfRandSymmetric
+InfRandTridiagonal
+InfRandUnitLowerTriangular
+InfRandUnitUpperTriangular
+InfRandUpperTriangular
+InfRandVector
+
+```
 
 ```julia-repl
 julia> using InfiniteRandomArrays, Random
