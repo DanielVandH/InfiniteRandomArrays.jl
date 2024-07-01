@@ -4,6 +4,8 @@ using Aqua
 using Distributions
 using Random
 using InfiniteArrays
+using LinearAlgebra
+using BandedMatrices
 
 @testset verbose = true "Aqua" begin
     Aqua.test_all(InfiniteRandomArrays; ambiguities=false)
@@ -13,3 +15,4 @@ end
 include("vector.jl")
 include("matrix.jl")
 include("brand.jl")
+include("named.jl")

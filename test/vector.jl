@@ -45,3 +45,17 @@
         @test kp ≠ kp3
     end
 end
+
+@testset "_gen_seqs" begin
+    @inferred InfiniteRandomArrays._gen_seqs(Val(3), Float64)
+    @test all(i -> i isa InfRandVector, InfiniteRandomArrays._gen_seqs(Val(3), Float64))
+    rng = Random.seed!(123)
+    s1, s2, s3 = InfiniteRandomArrays._gen_seqs(Val(3), Float64)
+    rng = Random.seed!(123)
+    _s1 = InfRandVector(rng)
+    _s2 = InfRandVector(rng)
+    _s3 = InfRandVector(rng)
+    @test s1[1:100] == _s1[1:100]
+    @test s2[1:100] == _s2[1:100]
+    @test s3[1:100] == _s3[1:100]
+end

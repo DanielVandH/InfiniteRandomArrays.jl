@@ -1,4 +1,3 @@
-using BandedMatrices
 @testset "brand" begin
     function test_brand(A, ::Type{T}, n, m, a, b; seed, normal) where {T}
         Random.seed!(seed)
