@@ -1,7 +1,7 @@
 name = "InfiniteRandomArrays"
 uuid = "2bc77966-89c7-476d-a40f-269028fac4a9"
 authors = ["DanielVandH <danj.vandenheuvel@gmail.com> and contributors"]
-version = "0.2.1"
+version = "0.2.0"
 
 [deps]
 InfiniteArrays = "4858937d-0d70-526a-a4dd-2d5cb5dd786c"
