@@ -1,5 +1,6 @@
 module InfiniteRandomArrays
 
+import Base: size, axes, length
 import Random: Random, default_rng, seed!, AbstractRNG
 import LazyArrays: LazyArrays, AbstractCachedVector, resizedata!, LazyMatrix
 import InfiniteArrays: InfiniteArrays, ℵ₀, ∞, Infinity, InfiniteCardinal
