@@ -6,6 +6,8 @@ using Random
 using InfiniteArrays
 using LinearAlgebra
 using BandedMatrices
+using LazyArrays: LazyArrays, CachedArray
+using FillArrays
 
 @testset verbose = true "Aqua" begin
     Aqua.test_all(InfiniteRandomArrays; ambiguities=false)

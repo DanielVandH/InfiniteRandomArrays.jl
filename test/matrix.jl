@@ -17,6 +17,8 @@
         @test (A'+A')[1:1000, 1:5] ≈ 2_A'
         @test A[11] ≈ A.seq[11] ≈ A[1, 3]
         @test InfRandMatrix(5, ∞)[1:5, 1:100] ≠ InfRandMatrix(5, ∞)[1:5, 1:100]
+        @test similar(A) isa CachedArray{Float64, 2, Matrix{Float64}, <:Zeros}
+        @test size(similar(A)) == (5, ∞)
 
         Random.seed!(12356)
         B = InfRandMatrix(∞, 7)
@@ -32,6 +34,8 @@
         _B = [rand() for _ in 1:7, _ in 1:1000]
         @test _B' == B[1:1000, 1:7]
         @test InfRandMatrix(∞, 3)[1:5, 1:2] ≠ InfRandMatrix(∞, 3)[1:5, 1:2]
+        @test similar(B) isa CachedArray{Float64, 2, Matrix{Float64}, <:Zeros}
+        @test size(similar(B)) == (∞, 7)
 
         Random.seed!(9888)
         C = InfRandMatrix()
@@ -47,6 +51,8 @@
         @test seq[2:3] == [C[1, 2], C[2, 1]]
         @test seq[4:6] == [C[1, 3], C[2, 2], C[3, 1]]
         @test seq[7:10] == [C[1, 4], C[2, 3], C[3, 2], C[4, 1]]
+        @test similar(C) isa CachedArray{Float64, 2, Matrix{Float64}, <:Zeros}
+        @test size(similar(C)) == (∞, ∞)
     end
 
     @testset "Providing an RNG and a distribution" begin

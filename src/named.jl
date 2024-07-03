@@ -26,5 +26,3 @@ end
 const InfRandDiagonal{T} = Diagonal{T,<:InfRandVector{T}}
 InfRandDiagonal{T}() where {T} = Diagonal(InfRandVector(dist=T))
 InfRandDiagonal(::Type{T}=Float64) where {T} = InfRandDiagonal{T}()
-
-# Could also do InfRandBandedSPD using (l + u)I + brand(∞, ∞, l, u) (this is diagonally dominant)

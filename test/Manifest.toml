@@ -2,7 +2,7 @@
 
 julia_version = "1.10.4"
 manifest_format = "2.0"
-project_hash = "f3dbf89a45b32b60e9f4f9d1bc3309c2f2d2bbf5"
+project_hash = "85e7e1ba8877b67ae9c431d12464662c918f003d"
 
 [[deps.AliasTables]]
 deps = ["PtrArrays", "Random"]
@@ -172,9 +172,9 @@ version = "1.5.0"
 
 [[deps.LazyArrays]]
 deps = ["ArrayLayouts", "FillArrays", "LinearAlgebra", "MacroTools", "SparseArrays"]
-git-tree-sha1 = "fb43bbe51db62510b032b85e157ea87d77b2fa07"
+git-tree-sha1 = "8e8b794ab7f3789e408d691e9e22c2129f0adcc9"
 uuid = "5078a376-72f3-5289-bfd5-ec5146d43c02"
-version = "2.1.0"
+version = "2.1.2"
 
     [deps.LazyArrays.extensions]
     LazyArraysBandedMatricesExt = "BandedMatrices"

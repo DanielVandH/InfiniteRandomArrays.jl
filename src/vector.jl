@@ -25,9 +25,8 @@ function InfRandVector(rng::AbstractRNG=default_rng(); dist=Float64)
     return InfRandVector{T,_dist_type(dist),typeof(_rng)}(_rng, dist, T[], 0)
 end
 
-Base.size(::InfRandVector) = (∞,)
-Base.axes(::InfRandVector) = (1:∞,)
-Base.length(::InfRandVector) = ∞
+size(::InfRandVector) = (∞,)
+length(::InfRandVector) = ∞
 
 @inline _single_rand(seq::InfRandVector) = _rand(seq.rng, seq.dist)
 function resizedata!(seq::InfRandVector, inds)
