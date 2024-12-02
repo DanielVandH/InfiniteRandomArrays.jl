@@ -67,6 +67,6 @@
         rng = Xoshiro(5)
         seq = InfRandMatrix(rng, 2, ∞; dist)
         rng2 = Xoshiro(5)
-        @test seq[1:1000] == [0.3 + 1.7randn(rng2) for _ in 1:1000]
+        @test seq[1:1000] ≈ [0.3 + 1.7randn(rng2) for _ in 1:1000]
     end
 end

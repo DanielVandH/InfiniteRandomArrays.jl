@@ -39,8 +39,4 @@ include("vector.jl")
 include("matrix.jl")
 include("named.jl")
 
-if !isdefined(Base, :get_extension)
-    include("../ext/InfiniteRandomArraysBandedMatricesExt.jl")
-end
-
 end

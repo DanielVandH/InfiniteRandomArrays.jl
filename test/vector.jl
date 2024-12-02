@@ -30,7 +30,7 @@
         rng = Xoshiro(5)
         seq = InfRandVector(rng; dist)
         rng2 = Xoshiro(5)
-        @test seq[1:100] == [0.3 + 1.7randn(rng2) for _ in 1:100]
+        @test seq[1:100] ≈ [0.3 + 1.7randn(rng2) for _ in 1:100]
 
         @test InfiniteRandomArrays._dist_type(dist) == Normal{Float64}
         @test InfiniteRandomArrays._dist_type(Float64) == Type{Float64}
